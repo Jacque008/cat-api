@@ -1,6 +1,6 @@
 const express = require('express');
 const { graphqlHTTP } = require('express-graphql');
-const { schema, resolver } = require('.');
+const { schema, resolver } = require('./schema/index');
 const envs = require('./envs');
 
 const app = express();
@@ -22,3 +22,4 @@ app.use(
 app.listen(envs.port, () => {
     console.log(`Server is running at http://localhost:${envs.port}${envs.graphqlPath}`);
 });
+

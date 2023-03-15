@@ -32,3 +32,69 @@ const schema = buildSchema(`
 `);
 
 module.exports = schema;
+
+// const graphql = require('graphql');
+
+// const {
+//     GraphQLSchema,
+//     GraphQLObjectType,
+//     GraphQLString,
+//     GraphQLList,
+//     GraphQLID,
+//     GraphQLInt,
+//     GraphQLNonNull,
+//   } = require("graphql")
+
+// const CatType = new GraphQLObjectType({
+//    name: 'Cat',
+//    description: "This represents a cat",
+//    fields: () => ({
+//      id: { type: new GraphQLNonNull(GraphQLID) },
+//      name: { type: new GraphQLNonNull(GraphQLString) },
+//      age: { type: GraphQLInt },
+//      breed: { type: GraphQLString },
+//      color: { type: GraphQLString},
+//      energy_level: { type: new GraphQLNonNull(GraphQLInt) },
+//      temperament: { type: new GraphQLList(GraphQLString)}
+//      })
+//  })
+
+//  const RootQuery = new GraphQLObjectType({
+//     name: "Query",
+//     description: "Root Query",
+//     fields: () => ({
+//       cat: {
+//         type: CatType,
+//         description: "A Single Cat",
+//         args: {
+//           id: { type: GraphQLID }
+//         },
+//         // resolve: (parent, args) => cats.find(cat => cat.id === args.id)
+//         resolve: (parent, args) => {
+//             const query = `SELECT * FROM "cat" WHERE id=${args.id}`;
+//             return db.conn.one(query)
+//                           .then(data => {
+//                             return data;})
+//                           .catch(err => {
+//                             return 'The error is', err;});
+//         }
+//       },
+
+//       cats: {
+//         type: new GraphQLList(CatType),
+//         description: "List of All Cats",
+//                 resolve: (parent, args) => {
+//             const query = `SELECT * FROM "cat"`;
+//             return db.conn.many(query)
+//                           .then(data => {
+//                             return data;})
+//                           .catch(err => {
+//                             return 'The error is', err;});
+//         }
+//       }
+//     })
+//   })
+
+// module.exports = new GraphQLSchema({
+//    query: RootQuery
+// })
